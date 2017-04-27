@@ -8,7 +8,8 @@
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.plugin.compiler.version>3.6.1</maven.plugin.compiler.version>
-
+		<jmeter.maven.version>2.1.0</jmeter.maven.version>
+		<jmeter.maven.analysis.version>1.0.6</jmeter.maven.analysis.version>
 	</properties>
 
 	<groupId>StressTest</groupId>
@@ -25,7 +26,7 @@
 			<plugin>
 				<groupId>com.lazerycode.jmeter</groupId>
 				<artifactId>jmeter-maven-plugin</artifactId>
-				<version>2.1.0</version>
+				<version>${jmeter.maven.version}</version>
 				<executions>
 					<execution>
 						<id>jmeter-tests</id>
@@ -39,6 +40,10 @@
 			<plugin>
 				<groupId>com.lazerycode.jmeter</groupId>
 				<artifactId>jmeter-analysis-maven-plugin</artifactId>
+				<version>${jmeter.maven.analysis.version}</version>
+				<configuration>
+					<testResultsTimestamp>false</testResultsTimestamp>
+				</configuration>
 				<executions>
 					<execution>
 						<phase>verify</phase>
@@ -50,7 +55,6 @@
 								analyze. Must be a fully qualified path. File may be GZiped, must end in 
 								.gz then. Default: not set. Required. -->
 							<source>${project.build.directory}/**/*.jtl</source>
-
 							<!-- directory where to store analysis result files. Default: ${project.build.directory} 
 								Required. -->
 							<targetDirectory>${project.build.directory}/results</targetDirectory>
@@ -60,5 +64,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>
