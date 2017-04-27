@@ -1,2 +1,11 @@
+## Idea files
 StressTest.iml
 .idea/
+
+## Maven generated
+/target/
+
+## Eclipse
+.classpath
+.project
+.settings/
